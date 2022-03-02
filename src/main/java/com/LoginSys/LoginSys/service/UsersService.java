@@ -2,8 +2,10 @@ package com.LoginSys.LoginSys.service;
 
 import com.LoginSys.LoginSys.Model.UsersModel;
 import com.LoginSys.LoginSys.repository.UsersRepository;
+import org.springframework.stereotype.Service;
 
-public class UsersService
+@Service
+public  class UsersService
 {
 
     private final UsersRepository usersRepository;
@@ -12,14 +14,14 @@ public class UsersService
     {
         this.usersRepository = usersRepository;
     }
-    public UsersModel registeruser(String username,String password,String email)
+    public UsersModel registerUser(String login,String password,String email)
     {
 
-        if(username == null || password == null)
+        if(login == null || password == null)
             return null;
         else{
             UsersModel usersModel = new UsersModel();
-            usersModel.setLogin(username);
+            usersModel.setLogin(login);
             usersModel.setPassword(password);
             usersModel.setEmail(email);
 
@@ -29,8 +31,13 @@ public class UsersService
 
 
     }
-    public UsersModel authenticate(String username, String password)
+
+
+    public UsersModel authenticate(String login, String password)
     {
-        return usersRepository.findbyLoginandPassword(username,password).orElse(null);
+        UsersModel usersModel = usersRepository.findByLoginAndPassword(login, password).orElse(null);
+        return usersModel;
     }
+
+
 }
