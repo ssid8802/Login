@@ -1,11 +1,12 @@
-package com.LoginSys.LoginSys;
+package com.LoginSys.LoginSys.Model;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "users_table")
-public class UsersModule {
+public
+class UsersModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,7 +55,7 @@ public class UsersModule {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UsersModule that = (UsersModule) o;
+        UsersModel that = (UsersModel) o;
         return Objects.equals(id, that.id) && Objects.equals(login, that.login) && Objects.equals(password, that.password) && Objects.equals(email, that.email);
     }
 
