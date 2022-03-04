@@ -44,7 +44,7 @@ public class UsersController
     {
         System.out.println("registerRequest" + usersModel);
         UsersModel registerUser =usersService.registerUser(usersModel.getLogin(),usersModel.getPassword(),usersModel.getEmail());
-        return registerUser==null?"error_page":"redirect:/login";
+        return registerUser==null?"error_page":"Successful";
     }
 
     @PostMapping("/login")
