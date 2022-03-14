@@ -1,4 +1,4 @@
-package Spring.Twilio.Service;
+package com.LoginSys.LoginSys.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -7,7 +7,7 @@ import com.twilio.exception.ApiException;
 import com.twilio.rest.verify.v2.service.Verification;
 import com.twilio.rest.verify.v2.service.VerificationCheck;
 
-import Spring.Twilio.Twilioproperties;
+import com.LoginSys.LoginSys.Twilioproperties;
 
 @Service
 public class PhoneverificationService {
@@ -23,7 +23,7 @@ public class PhoneverificationService {
 	//method to send to otp
     public VerificationResult startVerification(String phone) {
         try {
-            Verification verification = Verification.creator(twilioproperties.getServiceId(), phone, "sms").create();
+            Verification verification = Verification.creator("VA4eab8d7767baab949ab8ddb6bfddb2f0", phone, "sms").create();
             if("approved".equals(verification.getStatus())|| "pending".equals(verification.getStatus())) {
 			return new VerificationResult(verification.getSid());
 			}
@@ -35,7 +35,8 @@ public class PhoneverificationService {
 
     //mehtod to verifiy the otp
     public VerificationResult checkverification(String phone, String code) {
-        try {
+        try
+        {
             VerificationCheck verification = VerificationCheck.creator(twilioproperties.getServiceId(), code).setTo(phone).create();
             if("approved".equals(verification.getStatus())) {
                 return new VerificationResult(verification.getSid());

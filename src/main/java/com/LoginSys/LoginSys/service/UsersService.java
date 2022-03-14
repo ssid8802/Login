@@ -14,7 +14,7 @@ public  class UsersService
     {
         this.usersRepository = usersRepository;
     }
-    public UsersModel registerUser(String login,String password,String email)
+    public UsersModel registerUser(Integer id,String login,String password,String email)
     {
 
         if(login == null || password == null)
@@ -22,14 +22,42 @@ public  class UsersService
         else{
             UsersModel usersModel = new UsersModel();
             usersModel.setLogin(login);
+//            String s=password;
+//            Integer key = s.length();
+//
+//            String pass = usersModel.getPassword();
+//            char[] pass_arr = pass.toCharArray();
+//            //     System.out.println(pass);
+//            for(int i=0;i<key;++i)
+//                pass_arr[i] += key;
+//
+//            pass = String.valueOf(pass_arr);
+//            usersModel.setPassword(password);
             usersModel.setPassword(password);
             usersModel.setEmail(email);
+            usersModel.setId(id);
+
+
 
             return usersRepository.save(usersModel);
 
         }
 
 
+    }
+
+    public UsersModel updateUser(Integer id,String login,String password,String email) {
+        UsersModel usersModel = usersRepository.findByLoginAndPassword(login, password).orElse(null);
+        if (usersModel != null)
+        {
+            usersModel.setLogin(login);
+            usersModel.setPassword(password);
+            usersModel.setEmail(email);
+       //     usersModel.setId(id);
+            return usersRepository.save(usersModel);
+        }
+        //usersRepository.update(usersModel);
+        return usersModel;
     }
 
 

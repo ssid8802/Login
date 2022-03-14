@@ -1,18 +1,19 @@
-package com.LoginSys.LoginSys.service;
+package com.LoginSys.LoginSys;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConfigurationProperties("twilio")
 public class Twilioproperties {
-	
+
 	private String accountSid;
 	private String authToken;
 	private String serviceId;
-	
+
 	public Twilioproperties() {
-		
+
 	}
 	public String getAccountSid() {
 		return accountSid;
@@ -32,4 +33,6 @@ public class Twilioproperties {
 	public void setServiceId(String serviceId) {
 		this.serviceId = serviceId;
 	}
+
+
 }

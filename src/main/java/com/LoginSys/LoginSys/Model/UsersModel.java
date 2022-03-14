@@ -51,6 +51,8 @@ class UsersModel {
         this.email = email;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -65,7 +67,8 @@ class UsersModel {
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "UsersModule{" +
                 "id=" + id +
                 ", login='" + login + '\'' +

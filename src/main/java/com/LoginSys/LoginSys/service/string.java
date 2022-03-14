@@ -1,2 +1,4 @@
-package com.LoginSys.LoginSys.service;public class string {
+package com.LoginSys.LoginSys.service;
+
+public class string {
 }
